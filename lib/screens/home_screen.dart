@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:signupandsignin/model/update.dart';
 import 'package:signupandsignin/model/user_model.dart';
 import 'package:signupandsignin/screens/login_screen.dart';
 
@@ -32,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.red,
         title: Text("Welcome"),
         centerTitle: true,
       ),
@@ -76,12 +78,30 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: 15,
               ),
+              Material(
+                elevation: 5,
+                borderRadius: BorderRadius.circular(30),
+                color: Colors.redAccent,
+                child: MaterialButton(
+                  padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Updatedata()),
+                    );
+                  },
+                  child: Icon(Icons.edit),
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
               ActionChip(
                 label: Text("Logout"),
                 onPressed: () {
                   logout(context);
                 },
-              )
+              ),
             ],
           ),
         ),
